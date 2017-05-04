@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TravComModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TravCom.dbo.CCBatchUpload' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CCBatchUpload">
+          <Key>
+            <PropertyRef Name="InvoiceDetailID" />
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="TransactionType" />
+            <PropertyRef Name="GrossAmount" />
+          </Key>
+          <Property Name="InvoiceDetailID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="InvoiceID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TransactionType" Type="tinyint" Nullable="false" />
+          <Property Name="GrossAmount" Type="money" Nullable="false" />
+          <Property Name="CCMask" Type="varchar" MaxLength="8" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Reference" Type="varchar" MaxLength="30" />
+          <Property Name="CardHolder" Type="varchar" MaxLength="50" />
+          <Property Name="AuthorizationNumber" Type="varchar" MaxLength="30" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="10" />
+          <Property Name="CCNumber" Type="varbinary" MaxLength="128" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CCBatchUploadHash">
+          <Key>
+            <PropertyRef Name="InvoiceDetailID" />
+            <PropertyRef Name="CCID" />
+          </Key>
+          <Property Name="CCNum" Type="varchar" MaxLength="30" />
+          <Property Name="InvoiceDetailID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TravComModelStoreContainer">
+          <EntitySet Name="CCBatchUpload" EntityType="Self.CCBatchUpload" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CCBatchUpload].[InvoiceDetailID] AS [InvoiceDetailID], 
+    [CCBatchUpload].[InvoiceID] AS [InvoiceID], 
+    [CCBatchUpload].[TransactionType] AS [TransactionType], 
+    [CCBatchUpload].[GrossAmount] AS [GrossAmount], 
+    [CCBatchUpload].[CCMask] AS [CCMask], 
+    [CCBatchUpload].[InvoiceDate] AS [InvoiceDate], 
+    [CCBatchUpload].[CCID] AS [CCID], 
+    [CCBatchUpload].[Reference] AS [Reference], 
+    [CCBatchUpload].[CardHolder] AS [CardHolder], 
+    [CCBatchUpload].[AuthorizationNumber] AS [AuthorizationNumber], 
+    [CCBatchUpload].[ExpirationDate] AS [ExpirationDate], 
+    [CCBatchUpload].[InvoiceNumber] AS [InvoiceNumber], 
+    [CCBatchUpload].[CCNumber] AS [CCNumber]
+    FROM [dbo].[CCBatchUpload] AS [CCBatchUpload]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CCBatchUploadHash" EntityType="Self.CCBatchUploadHash" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CCBatchUploadHash].[CCNum] AS [CCNum], 
+    [CCBatchUploadHash].[InvoiceDetailID] AS [InvoiceDetailID], 
+    [CCBatchUploadHash].[CCID] AS [CCID]
+    FROM [dbo].[CCBatchUploadHash] AS [CCBatchUploadHash]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TravComModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TravComEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CCBatchUpload" EntityType="TravComModel.CCBatchUpload" />
+          <EntitySet Name="CCBatchUploadHash" EntityType="TravComModel.CCBatchUploadHash" />
+        </EntityContainer>
+        <EntityType Name="CCBatchUpload">
+          <Key>
+            <PropertyRef Name="InvoiceDetailID" />
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="TransactionType" />
+            <PropertyRef Name="GrossAmount" />
+          </Key>
+          <Property Name="InvoiceDetailID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="InvoiceID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TransactionType" Type="Byte" Nullable="false" />
+          <Property Name="GrossAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="CCID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Reference" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuthorizationNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CCNumber" Type="Binary" MaxLength="128" FixedLength="false" />
+          <Property Name="CCMask" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CCBatchUploadHash">
+          <Key>
+            <PropertyRef Name="InvoiceDetailID" />
+            <PropertyRef Name="CCID" />
+          </Key>
+          <Property Name="CCNum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDetailID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CCID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TravComModelStoreContainer" CdmEntityContainer="TravComEntities">
+          <EntitySetMapping Name="CCBatchUpload">
+            <EntityTypeMapping TypeName="TravComModel.CCBatchUpload">
+              <MappingFragment StoreEntitySet="CCBatchUpload">
+                <ScalarProperty Name="CCMask" ColumnName="CCMask" />
+                <ScalarProperty Name="CCNumber" ColumnName="CCNumber" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="AuthorizationNumber" ColumnName="AuthorizationNumber" />
+                <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCBatchUploadHash">
+            <EntityTypeMapping TypeName="TravComModel.CCBatchUploadHash">
+              <MappingFragment StoreEntitySet="CCBatchUploadHash">
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
+                <ScalarProperty Name="CCNum" ColumnName="CCNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

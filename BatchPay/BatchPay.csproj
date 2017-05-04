@@ -57,29 +57,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BatchPay.Context.cs">
+    <Compile Include="Model\BatchpayEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BatchPay.Context.tt</DependentUpon>
+      <DependentUpon>BatchpayEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BatchPay.cs">
+    <Compile Include="Model\BatchpayEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BatchPay.tt</DependentUpon>
+      <DependentUpon>BatchpayEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BatchPay.Designer.cs">
+    <Compile Include="Model\BatchpayEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BatchPay.edmx</DependentUpon>
+      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BatchPayModel.cs" />
+    <Compile Include="Model\BDOFormatModel.cs" />
+    <Compile Include="Model\CCBatchUpload.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CCBatchUploadHash.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Logs.cs">
-      <DependentUpon>BatchPay.tt</DependentUpon>
+      <DependentUpon>BatchpayEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TravcomEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TravcomEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TravcomEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TravcomEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TravcomEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\UseAccount.cs">
-      <DependentUpon>BatchPay.tt</DependentUpon>
+      <DependentUpon>BatchpayEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BatchPayService.cs" />
+    <Compile Include="Service\LoginService.cs" />
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,12 +132,19 @@
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\BatchPay.edmx">
+    <EntityDeploy Include="Model\TravcomEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BatchPay.Designer.cs</LastGenOutput>
+      <LastGenOutput>TravcomEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\BatchPay.edmx.diagram">
-      <DependentUpon>BatchPay.edmx</DependentUpon>
+    <EntityDeploy Include="Model\BatchpayEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BatchpayEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\BatchpayEntities.edmx.diagram">
+      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
+    </None>
+    <None Include="Model\TravcomEntities.edmx.diagram">
+      <DependentUpon>TravcomEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -129,23 +161,31 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\BatchPay.Context.tt">
+    <Content Include="Model\BatchpayEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BatchPay.edmx</DependentUpon>
-      <LastGenOutput>BatchPay.Context.cs</LastGenOutput>
+      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
+      <LastGenOutput>BatchpayEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\BatchPay.tt">
+    <Content Include="Model\BatchpayEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BatchPay.edmx</DependentUpon>
-      <LastGenOutput>BatchPay.cs</LastGenOutput>
+      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
+      <LastGenOutput>BatchpayEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TravcomEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TravcomEntities.edmx</DependentUpon>
+      <LastGenOutput>TravcomEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TravcomEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TravcomEntities.edmx</DependentUpon>
+      <LastGenOutput>TravcomEntities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
