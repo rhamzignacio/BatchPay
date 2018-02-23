@@ -18,6 +18,7 @@ namespace BatchPay.Model
         public decimal InvoiceID { get; set; }
         public byte TransactionType { get; set; }
         public decimal GrossAmount { get; set; }
+        public string CCMask { get; set; }
         public Nullable<System.DateTime> InvoiceDate { get; set; }
         public Nullable<decimal> CCID { get; set; }
         public string Reference { get; set; }
@@ -25,7 +26,14 @@ namespace BatchPay.Model
         public string AuthorizationNumber { get; set; }
         public Nullable<System.DateTime> ExpirationDate { get; set; }
         public string InvoiceNumber { get; set; }
-        public byte[] CCNumber { get; set; }
-        public string CCMask { get; set; }
+        public string IndiCardNo { get; set; }
+        public string ProfileNumber { get; set; }
+        public string CorpCardNo { get; set; }
+        public string ProfileName { get; set; }
+        public string PassengerName { get; set; }
+        public string CurrencyCode { get; set; }
+        public string CardNumber { get; set; }
+        public string CorpCardHolder { get; set; }
+        public Nullable<System.DateTime> CorpCardExp { get; set; }
     }
 }

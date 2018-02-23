@@ -5,6 +5,190 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TravComModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARInvoiceDetails">
+          <Key>
+            <PropertyRef Name="InvoiceDetailID" />
+          </Key>
+          <Property Name="InvoiceDetailID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReservationID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TransactionType" Type="tinyint" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="PostingMonth" Type="int" Nullable="false" />
+          <Property Name="SubmitTo" Type="tinyint" Nullable="false" />
+          <Property Name="VendorNumber" Type="varchar" MaxLength="8" />
+          <Property Name="VendorName" Type="varchar" MaxLength="50" />
+          <Property Name="VendorAddress" Type="varchar" MaxLength="255" />
+          <Property Name="VendorPhone" Type="varchar" MaxLength="20" />
+          <Property Name="VendorFax" Type="varchar" MaxLength="20" />
+          <Property Name="VendorEmail" Type="varchar" MaxLength="100" />
+          <Property Name="ChainCode" Type="varchar" MaxLength="2" />
+          <Property Name="PropertyCode" Type="varchar" MaxLength="30" />
+          <Property Name="CommissionClientNumber" Type="varchar" MaxLength="10" />
+          <Property Name="AgencyCCVendorNumber" Type="varchar" MaxLength="8" />
+          <Property Name="ProductCode" Type="tinyint" Nullable="false" />
+          <Property Name="VatCode" Type="varchar" MaxLength="2" />
+          <Property Name="CurrencyCode" Type="varchar" MaxLength="3" />
+          <Property Name="PassengerName" Type="varchar" MaxLength="50" />
+          <Property Name="ValidatingCarrier" Type="varchar" MaxLength="3" />
+          <Property Name="TicketNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ETicket" Type="bit" Nullable="false" />
+          <Property Name="Exchange" Type="bit" Nullable="false" />
+          <Property Name="ADM" Type="bit" Nullable="false" />
+          <Property Name="OriginalTicket" Type="varchar" MaxLength="30" />
+          <Property Name="OriginalInvoice" Type="varchar" MaxLength="30" />
+          <Property Name="PublishedFare" Type="money" Nullable="false" />
+          <Property Name="SellingFare" Type="money" Nullable="false" />
+          <Property Name="ReferenceFare" Type="money" Nullable="false" />
+          <Property Name="LowFare" Type="money" Nullable="false" />
+          <Property Name="Tax1" Type="money" Nullable="false" />
+          <Property Name="Tax2" Type="money" Nullable="false" />
+          <Property Name="Tax3" Type="money" Nullable="false" />
+          <Property Name="Tax4" Type="money" Nullable="false" />
+          <Property Name="Penalty" Type="money" Nullable="false" />
+          <Property Name="GrossAmount" Type="money" Nullable="false" />
+          <Property Name="CommissionAmount" Type="money" Nullable="false" />
+          <Property Name="VatOnCommission" Type="money" Nullable="false" />
+          <Property Name="PstOnCommission" Type="money" Nullable="false" />
+          <Property Name="PenaltyCommission" Type="money" Nullable="false" />
+          <Property Name="NetFare" Type="money" Nullable="false" />
+          <Property Name="NetFareValueCode" Type="varchar" MaxLength="1" />
+          <Property Name="BookingAgentCommission" Type="money" Nullable="false" />
+          <Property Name="TicketingAgentCommission" Type="money" Nullable="false" />
+          <Property Name="OSAgentCommission1" Type="money" Nullable="false" />
+          <Property Name="OSAgentCommission2" Type="money" Nullable="false" />
+          <Property Name="International" Type="bit" Nullable="false" />
+          <Property Name="ExceptionCode" Type="varchar" MaxLength="3" />
+          <Property Name="GSANumber" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseOrder" Type="varchar" MaxLength="50" />
+          <Property Name="FreeFieldA" Type="varchar" MaxLength="250" />
+          <Property Name="FreeFieldB" Type="varchar" MaxLength="250" />
+          <Property Name="FreeFieldC" Type="varchar" MaxLength="250" />
+          <Property Name="FreeFieldD" Type="varchar" MaxLength="250" />
+          <Property Name="RoutingCode" Type="varchar" MaxLength="50" />
+          <Property Name="TourCode" Type="varchar" MaxLength="50" />
+          <Property Name="GroupCode" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionCode" Type="varchar" MaxLength="50" />
+          <Property Name="Source" Type="varchar" MaxLength="30" />
+          <Property Name="TravelDate" Type="datetime" />
+          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="NumberOfDays" Type="smallint" Nullable="false" />
+          <Property Name="NumberOfPassengers" Type="smallint" Nullable="false" />
+          <Property Name="NumberOfItems" Type="smallint" Nullable="false" />
+          <Property Name="ItemType" Type="varchar" MaxLength="20" />
+          <Property Name="CityCode" Type="varchar" MaxLength="5" />
+          <Property Name="VoucherRate" Type="money" Nullable="false" />
+          <Property Name="RateType" Type="tinyint" Nullable="false" />
+          <Property Name="VoucherStatus" Type="tinyint" Nullable="false" />
+          <Property Name="FormOfPayment" Type="tinyint" Nullable="false" />
+          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CreditCardNumber" Type="varchar" MaxLength="30" />
+          <Property Name="CreditAmount" Type="money" Nullable="false" />
+          <Property Name="APDueDate" Type="datetime" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="AddedBy" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="GWExported" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ARInvoices">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="10" />
+          <Property Name="BranchNumber" Type="smallint" Nullable="false" />
+          <Property Name="IataNumber" Type="int" Nullable="false" />
+          <Property Name="Division" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="ProfileNumber" Type="varchar" MaxLength="10" />
+          <Property Name="ProfileName" Type="varchar" MaxLength="50" />
+          <Property Name="ProfileAddress" Type="varchar" MaxLength="255" />
+          <Property Name="ProfileEmail" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="30" />
+          <Property Name="BookingDate" Type="datetime" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="SystemDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="BookingAgentNumber" Type="varchar" MaxLength="6" />
+          <Property Name="TicketingAgentNumber" Type="varchar" MaxLength="6" />
+          <Property Name="OSAgentNumber1" Type="varchar" MaxLength="6" />
+          <Property Name="OSAgentNumber2" Type="varchar" MaxLength="6" />
+          <Property Name="RecordLocator" Type="varchar" MaxLength="20" />
+          <Property Name="InvoiceGroup" Type="varchar" MaxLength="50" />
+          <Property Name="VatCode" Type="varchar" MaxLength="2" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="AddedBy" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="InvoiceRemarks" Type="text" />
+          <Property Name="PrivateRemarks" Type="text" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileNumber" Type="varchar" MaxLength="10" />
+          <Property Name="CardType" Type="tinyint" Nullable="false" />
+          <Property Name="TravelType" Type="tinyint" Nullable="false" />
+          <Property Name="CardDescription" Type="varchar" MaxLength="50" />
+          <Property Name="CardCompany" Type="varchar" MaxLength="50" />
+          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="30" />
+          <Property Name="CardHolder" Type="varchar" MaxLength="50" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="IssueDate" Type="datetime" />
+          <Property Name="DefaultCard" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCEncrypted">
+          <Key>
+            <PropertyRef Name="CCID" />
+          </Key>
+          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CCMask" Type="varchar" MaxLength="8" />
+          <Property Name="CCNumber" Type="varbinary" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileType" Type="tinyint" Nullable="false" />
+          <Property Name="ProfileNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="InterfaceCode" Type="varchar" MaxLength="50" />
+          <Property Name="AccountType" Type="tinyint" Nullable="false" />
+          <Property Name="Prefix" Type="varchar" MaxLength="20" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Salutation" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneType1" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneType2" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneType3" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneType4" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneType5" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNumber1" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber2" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber3" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber4" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber5" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneSort1" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneSort2" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneSort3" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneSort4" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneSort5" Type="varchar" MaxLength="20" />
+          <Property Name="Language" Type="tinyint" Nullable="false" />
+          <Property Name="FirstDate" Type="datetime" />
+          <Property Name="LastDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="AddedBy" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="SendEmail" Type="bit" Nullable="false" />
+          <Property Name="CBSync" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="text" />
+          <Property Name="Branches" Type="varchar" MaxLength="1000" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TravCom.dbo.CCBatchUpload' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CCBatchUpload">
@@ -21,12 +205,20 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUpload' does not have a primary
           <Property Name="CCMask" Type="varchar" MaxLength="8" />
           <Property Name="InvoiceDate" Type="datetime" />
           <Property Name="CCID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CurrencyCode" Type="varchar" MaxLength="3" />
           <Property Name="Reference" Type="varchar" MaxLength="30" />
           <Property Name="CardHolder" Type="varchar" MaxLength="50" />
           <Property Name="AuthorizationNumber" Type="varchar" MaxLength="30" />
           <Property Name="ExpirationDate" Type="datetime" />
           <Property Name="InvoiceNumber" Type="varchar" MaxLength="10" />
-          <Property Name="CCNumber" Type="varbinary" MaxLength="128" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="30" />
+          <Property Name="IndiCardNo" Type="varchar" MaxLength="30" />
+          <Property Name="ProfileNumber" Type="varchar" MaxLength="10" />
+          <Property Name="CorpCardNo" Type="varchar" MaxLength="30" />
+          <Property Name="CorpCardHolder" Type="varchar" MaxLength="50" />
+          <Property Name="CorpCardExp" Type="datetime" />
+          <Property Name="ProfileName" Type="varchar" MaxLength="50" />
+          <Property Name="PassengerName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -37,9 +229,14 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
           </Key>
           <Property Name="CCNum" Type="varchar" MaxLength="30" />
           <Property Name="InvoiceDetailID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CCID" Type="numeric" Precision="18" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityContainer Name="TravComModelStoreContainer">
+          <EntitySet Name="ARInvoiceDetails" EntityType="Self.ARInvoiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARInvoices" EntityType="Self.ARInvoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCEncrypted" EntityType="Self.CCEncrypted" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CCBatchUpload" EntityType="Self.CCBatchUpload" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CCBatchUpload].[InvoiceDetailID] AS [InvoiceDetailID], 
@@ -49,12 +246,20 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
     [CCBatchUpload].[CCMask] AS [CCMask], 
     [CCBatchUpload].[InvoiceDate] AS [InvoiceDate], 
     [CCBatchUpload].[CCID] AS [CCID], 
+    [CCBatchUpload].[CurrencyCode] AS [CurrencyCode], 
     [CCBatchUpload].[Reference] AS [Reference], 
     [CCBatchUpload].[CardHolder] AS [CardHolder], 
     [CCBatchUpload].[AuthorizationNumber] AS [AuthorizationNumber], 
     [CCBatchUpload].[ExpirationDate] AS [ExpirationDate], 
     [CCBatchUpload].[InvoiceNumber] AS [InvoiceNumber], 
-    [CCBatchUpload].[CCNumber] AS [CCNumber]
+    [CCBatchUpload].[CardNumber] AS [CardNumber], 
+    [CCBatchUpload].[IndiCardNo] AS [IndiCardNo], 
+    [CCBatchUpload].[ProfileNumber] AS [ProfileNumber], 
+    [CCBatchUpload].[CorpCardNo] AS [CorpCardNo], 
+    [CCBatchUpload].[CorpCardHolder] AS [CorpCardHolder], 
+    [CCBatchUpload].[CorpCardExp] AS [CorpCardExp], 
+    [CCBatchUpload].[ProfileName] AS [ProfileName], 
+    [CCBatchUpload].[PassengerName] AS [PassengerName]
     FROM [dbo].[CCBatchUpload] AS [CCBatchUpload]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="CCBatchUploadHash" EntityType="Self.CCBatchUploadHash" store:Type="Views" store:Schema="dbo">
@@ -70,9 +275,207 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
     <edmx:ConceptualModels>
       <Schema Namespace="TravComModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TravComEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CCBatchUpload" EntityType="TravComModel.CCBatchUpload" />
+          <EntitySet Name="Profiles" EntityType="TravComModel.Profiles" />
+          <EntitySet Name="ARInvoiceDetails" EntityType="TravComModel.ARInvoiceDetails" />
+          <EntitySet Name="ARInvoices" EntityType="TravComModel.ARInvoices" />
+          <EntitySet Name="Cards" EntityType="TravComModel.Cards" />
+          <EntitySet Name="CCEncrypted" EntityType="TravComModel.CCEncrypted" />
           <EntitySet Name="CCBatchUploadHash" EntityType="TravComModel.CCBatchUploadHash" />
+          <EntitySet Name="CCBatchUpload" EntityType="TravComModel.CCBatchUpload" />
         </EntityContainer>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileType" Type="Byte" Nullable="false" />
+          <Property Name="ProfileNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InterfaceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="Byte" Nullable="false" />
+          <Property Name="Prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salutation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneType1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneType2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneType3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneType4" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneType5" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneSort1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneSort2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneSort3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneSort4" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneSort5" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="Byte" Nullable="false" />
+          <Property Name="FirstDate" Type="DateTime" Precision="3" />
+          <Property Name="LastDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="AddedBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="SendEmail" Type="Boolean" Nullable="false" />
+          <Property Name="CBSync" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Branches" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ARInvoiceDetails">
+          <Key>
+            <PropertyRef Name="InvoiceDetailID" />
+          </Key>
+          <Property Name="InvoiceDetailID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ReservationID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TransactionType" Type="Byte" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="PostingMonth" Type="Int32" Nullable="false" />
+          <Property Name="SubmitTo" Type="Byte" Nullable="false" />
+          <Property Name="VendorNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VendorFax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ChainCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CommissionClientNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AgencyCCVendorNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="Byte" Nullable="false" />
+          <Property Name="VatCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PassengerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValidatingCarrier" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="TicketNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ETicket" Type="Boolean" Nullable="false" />
+          <Property Name="Exchange" Type="Boolean" Nullable="false" />
+          <Property Name="ADM" Type="Boolean" Nullable="false" />
+          <Property Name="OriginalTicket" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalInvoice" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedFare" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SellingFare" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ReferenceFare" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="LowFare" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Tax1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Tax2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Tax3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Tax4" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Penalty" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="GrossAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CommissionAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="VatOnCommission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PstOnCommission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PenaltyCommission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="NetFare" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="NetFareValueCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BookingAgentCommission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TicketingAgentCommission" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OSAgentCommission1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OSAgentCommission2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="International" Type="Boolean" Nullable="false" />
+          <Property Name="ExceptionCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="GSANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FreeFieldA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FreeFieldB" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FreeFieldC" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FreeFieldD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="RoutingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TourCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TravelDate" Type="DateTime" Precision="3" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="NumberOfDays" Type="Int16" Nullable="false" />
+          <Property Name="NumberOfPassengers" Type="Int16" Nullable="false" />
+          <Property Name="NumberOfItems" Type="Int16" Nullable="false" />
+          <Property Name="ItemType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CityCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="VoucherRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RateType" Type="Byte" Nullable="false" />
+          <Property Name="VoucherStatus" Type="Byte" Nullable="false" />
+          <Property Name="FormOfPayment" Type="Byte" Nullable="false" />
+          <Property Name="CCID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CreditCardNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CreditAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="APDueDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="AddedBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="GWExported" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ARInvoices">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BranchNumber" Type="Int16" Nullable="false" />
+          <Property Name="IataNumber" Type="Int32" Nullable="false" />
+          <Property Name="Division" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BookingDate" Type="DateTime" Precision="3" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="SystemDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingAgentNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="TicketingAgentNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="OSAgentNumber1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="OSAgentNumber2" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="RecordLocator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VatCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="AddedBy" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="InvoiceRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrivateRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CardType" Type="Byte" Nullable="false" />
+          <Property Name="TravelType" Type="Byte" Nullable="false" />
+          <Property Name="CardDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CCID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CardNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="IssueDate" Type="DateTime" Precision="3" />
+          <Property Name="DefaultCard" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCEncrypted">
+          <Key>
+            <PropertyRef Name="CCID" />
+          </Key>
+          <Property Name="CCID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CCMask" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="CCNumber" Type="Binary" MaxLength="128" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CCBatchUploadHash">
+          <Key>
+            <PropertyRef Name="CCID" />
+            <PropertyRef Name="InvoiceDetailID" />
+          </Key>
+          <Property Name="CCNum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CCID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceDetailID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="CCBatchUpload">
           <Key>
             <PropertyRef Name="InvoiceDetailID" />
@@ -84,6 +487,7 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
           <Property Name="InvoiceID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="TransactionType" Type="Byte" Nullable="false" />
           <Property Name="GrossAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CCMask" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
           <Property Name="CCID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Reference" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -91,17 +495,15 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
           <Property Name="AuthorizationNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
           <Property Name="InvoiceNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CCNumber" Type="Binary" MaxLength="128" FixedLength="false" />
-          <Property Name="CCMask" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="CCBatchUploadHash">
-          <Key>
-            <PropertyRef Name="InvoiceDetailID" />
-            <PropertyRef Name="CCID" />
-          </Key>
-          <Property Name="CCNum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="InvoiceDetailID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="CCID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IndiCardNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CorpCardNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassengerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CorpCardHolder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CorpCardExp" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -109,11 +511,216 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TravComModelStoreContainer" CdmEntityContainer="TravComEntities">
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="TravComModel.Profiles">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="Branches" ColumnName="Branches" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CBSync" ColumnName="CBSync" />
+                <ScalarProperty Name="SendEmail" ColumnName="SendEmail" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+                <ScalarProperty Name="FirstDate" ColumnName="FirstDate" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="PhoneSort5" ColumnName="PhoneSort5" />
+                <ScalarProperty Name="PhoneSort4" ColumnName="PhoneSort4" />
+                <ScalarProperty Name="PhoneSort3" ColumnName="PhoneSort3" />
+                <ScalarProperty Name="PhoneSort2" ColumnName="PhoneSort2" />
+                <ScalarProperty Name="PhoneSort1" ColumnName="PhoneSort1" />
+                <ScalarProperty Name="PhoneNumber5" ColumnName="PhoneNumber5" />
+                <ScalarProperty Name="PhoneNumber4" ColumnName="PhoneNumber4" />
+                <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="PhoneType5" ColumnName="PhoneType5" />
+                <ScalarProperty Name="PhoneType4" ColumnName="PhoneType4" />
+                <ScalarProperty Name="PhoneType3" ColumnName="PhoneType3" />
+                <ScalarProperty Name="PhoneType2" ColumnName="PhoneType2" />
+                <ScalarProperty Name="PhoneType1" ColumnName="PhoneType1" />
+                <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="InterfaceCode" ColumnName="InterfaceCode" />
+                <ScalarProperty Name="ProfileNumber" ColumnName="ProfileNumber" />
+                <ScalarProperty Name="ProfileType" ColumnName="ProfileType" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARInvoiceDetails">
+            <EntityTypeMapping TypeName="TravComModel.ARInvoiceDetails">
+              <MappingFragment StoreEntitySet="ARInvoiceDetails">
+                <ScalarProperty Name="GWExported" ColumnName="GWExported" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="APDueDate" ColumnName="APDueDate" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="FormOfPayment" ColumnName="FormOfPayment" />
+                <ScalarProperty Name="VoucherStatus" ColumnName="VoucherStatus" />
+                <ScalarProperty Name="RateType" ColumnName="RateType" />
+                <ScalarProperty Name="VoucherRate" ColumnName="VoucherRate" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="NumberOfItems" ColumnName="NumberOfItems" />
+                <ScalarProperty Name="NumberOfPassengers" ColumnName="NumberOfPassengers" />
+                <ScalarProperty Name="NumberOfDays" ColumnName="NumberOfDays" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="TourCode" ColumnName="TourCode" />
+                <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+                <ScalarProperty Name="FreeFieldD" ColumnName="FreeFieldD" />
+                <ScalarProperty Name="FreeFieldC" ColumnName="FreeFieldC" />
+                <ScalarProperty Name="FreeFieldB" ColumnName="FreeFieldB" />
+                <ScalarProperty Name="FreeFieldA" ColumnName="FreeFieldA" />
+                <ScalarProperty Name="PurchaseOrder" ColumnName="PurchaseOrder" />
+                <ScalarProperty Name="GSANumber" ColumnName="GSANumber" />
+                <ScalarProperty Name="ExceptionCode" ColumnName="ExceptionCode" />
+                <ScalarProperty Name="International" ColumnName="International" />
+                <ScalarProperty Name="OSAgentCommission2" ColumnName="OSAgentCommission2" />
+                <ScalarProperty Name="OSAgentCommission1" ColumnName="OSAgentCommission1" />
+                <ScalarProperty Name="TicketingAgentCommission" ColumnName="TicketingAgentCommission" />
+                <ScalarProperty Name="BookingAgentCommission" ColumnName="BookingAgentCommission" />
+                <ScalarProperty Name="NetFareValueCode" ColumnName="NetFareValueCode" />
+                <ScalarProperty Name="NetFare" ColumnName="NetFare" />
+                <ScalarProperty Name="PenaltyCommission" ColumnName="PenaltyCommission" />
+                <ScalarProperty Name="PstOnCommission" ColumnName="PstOnCommission" />
+                <ScalarProperty Name="VatOnCommission" ColumnName="VatOnCommission" />
+                <ScalarProperty Name="CommissionAmount" ColumnName="CommissionAmount" />
+                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+                <ScalarProperty Name="Penalty" ColumnName="Penalty" />
+                <ScalarProperty Name="Tax4" ColumnName="Tax4" />
+                <ScalarProperty Name="Tax3" ColumnName="Tax3" />
+                <ScalarProperty Name="Tax2" ColumnName="Tax2" />
+                <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+                <ScalarProperty Name="LowFare" ColumnName="LowFare" />
+                <ScalarProperty Name="ReferenceFare" ColumnName="ReferenceFare" />
+                <ScalarProperty Name="SellingFare" ColumnName="SellingFare" />
+                <ScalarProperty Name="PublishedFare" ColumnName="PublishedFare" />
+                <ScalarProperty Name="OriginalInvoice" ColumnName="OriginalInvoice" />
+                <ScalarProperty Name="OriginalTicket" ColumnName="OriginalTicket" />
+                <ScalarProperty Name="ADM" ColumnName="ADM" />
+                <ScalarProperty Name="Exchange" ColumnName="Exchange" />
+                <ScalarProperty Name="ETicket" ColumnName="ETicket" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="ValidatingCarrier" ColumnName="ValidatingCarrier" />
+                <ScalarProperty Name="PassengerName" ColumnName="PassengerName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="VatCode" ColumnName="VatCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="AgencyCCVendorNumber" ColumnName="AgencyCCVendorNumber" />
+                <ScalarProperty Name="CommissionClientNumber" ColumnName="CommissionClientNumber" />
+                <ScalarProperty Name="PropertyCode" ColumnName="PropertyCode" />
+                <ScalarProperty Name="ChainCode" ColumnName="ChainCode" />
+                <ScalarProperty Name="VendorEmail" ColumnName="VendorEmail" />
+                <ScalarProperty Name="VendorFax" ColumnName="VendorFax" />
+                <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+                <ScalarProperty Name="VendorAddress" ColumnName="VendorAddress" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="SubmitTo" ColumnName="SubmitTo" />
+                <ScalarProperty Name="PostingMonth" ColumnName="PostingMonth" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARInvoices">
+            <EntityTypeMapping TypeName="TravComModel.ARInvoices">
+              <MappingFragment StoreEntitySet="ARInvoices">
+                <ScalarProperty Name="PrivateRemarks" ColumnName="PrivateRemarks" />
+                <ScalarProperty Name="InvoiceRemarks" ColumnName="InvoiceRemarks" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VatCode" ColumnName="VatCode" />
+                <ScalarProperty Name="InvoiceGroup" ColumnName="InvoiceGroup" />
+                <ScalarProperty Name="RecordLocator" ColumnName="RecordLocator" />
+                <ScalarProperty Name="OSAgentNumber2" ColumnName="OSAgentNumber2" />
+                <ScalarProperty Name="OSAgentNumber1" ColumnName="OSAgentNumber1" />
+                <ScalarProperty Name="TicketingAgentNumber" ColumnName="TicketingAgentNumber" />
+                <ScalarProperty Name="BookingAgentNumber" ColumnName="BookingAgentNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="SystemDate" ColumnName="SystemDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="ProfileEmail" ColumnName="ProfileEmail" />
+                <ScalarProperty Name="ProfileAddress" ColumnName="ProfileAddress" />
+                <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+                <ScalarProperty Name="ProfileNumber" ColumnName="ProfileNumber" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="IataNumber" ColumnName="IataNumber" />
+                <ScalarProperty Name="BranchNumber" ColumnName="BranchNumber" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="TravComModel.Cards">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="DefaultCard" ColumnName="DefaultCard" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="CardCompany" ColumnName="CardCompany" />
+                <ScalarProperty Name="CardDescription" ColumnName="CardDescription" />
+                <ScalarProperty Name="TravelType" ColumnName="TravelType" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="ProfileNumber" ColumnName="ProfileNumber" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCEncrypted">
+            <EntityTypeMapping TypeName="TravComModel.CCEncrypted">
+              <MappingFragment StoreEntitySet="CCEncrypted">
+                <ScalarProperty Name="CCNumber" ColumnName="CCNumber" />
+                <ScalarProperty Name="CCMask" ColumnName="CCMask" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCBatchUploadHash">
+            <EntityTypeMapping TypeName="TravComModel.CCBatchUploadHash">
+              <MappingFragment StoreEntitySet="CCBatchUploadHash">
+                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
+                <ScalarProperty Name="CCID" ColumnName="CCID" />
+                <ScalarProperty Name="CCNum" ColumnName="CCNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CCBatchUpload">
             <EntityTypeMapping TypeName="TravComModel.CCBatchUpload">
               <MappingFragment StoreEntitySet="CCBatchUpload">
-                <ScalarProperty Name="CCMask" ColumnName="CCMask" />
-                <ScalarProperty Name="CCNumber" ColumnName="CCNumber" />
+                <ScalarProperty Name="CorpCardExp" ColumnName="CorpCardExp" />
+                <ScalarProperty Name="CorpCardHolder" ColumnName="CorpCardHolder" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="PassengerName" ColumnName="PassengerName" />
+                <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+                <ScalarProperty Name="CorpCardNo" ColumnName="CorpCardNo" />
+                <ScalarProperty Name="ProfileNumber" ColumnName="ProfileNumber" />
+                <ScalarProperty Name="IndiCardNo" ColumnName="IndiCardNo" />
                 <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
                 <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
                 <ScalarProperty Name="AuthorizationNumber" ColumnName="AuthorizationNumber" />
@@ -121,19 +728,11 @@ warning 6002: The table/view 'TravCom.dbo.CCBatchUploadHash' does not have a pri
                 <ScalarProperty Name="Reference" ColumnName="Reference" />
                 <ScalarProperty Name="CCID" ColumnName="CCID" />
                 <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CCMask" ColumnName="CCMask" />
                 <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
                 <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
                 <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
                 <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CCBatchUploadHash">
-            <EntityTypeMapping TypeName="TravComModel.CCBatchUploadHash">
-              <MappingFragment StoreEntitySet="CCBatchUploadHash">
-                <ScalarProperty Name="CCID" ColumnName="CCID" />
-                <ScalarProperty Name="InvoiceDetailID" ColumnName="InvoiceDetailID" />
-                <ScalarProperty Name="CCNum" ColumnName="CCNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

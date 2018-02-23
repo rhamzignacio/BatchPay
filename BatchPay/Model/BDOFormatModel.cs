@@ -10,16 +10,40 @@ namespace BatchPay.Model
     {
         private char padding = ' ';
 
-        private string _merchantNumber;
-        public string MerchantNumber
+        public string Reference { get; set; }
+        public decimal? CCID { get; set; }
+        public decimal? GrossAmount { get; set;}
+
+        public string TransactionAmount
         {
             get
             {
-                return _merchantNumber.PadRight(11, padding);
+                return GrossAmount.ToString().PadRight(9, padding);
+            }
+        }
+        private string _merchantNumberPHP;
+        public string MerchantNumberPHP
+        {
+            get
+            {
+                return _merchantNumberPHP.PadRight(11, padding);
             }
             set
             {
-                _merchantNumber = "12345678910";
+                _merchantNumberPHP = "9181924564";
+            }
+        }
+
+        private string _merchantNumberUSD;
+        public string MerchantNumberUSD
+        {
+            get
+            {
+                return _merchantNumberUSD.PadRight(11, padding);
+            }
+            set
+            {
+                _merchantNumberUSD = "9181924572";
             }
         }
 
@@ -42,6 +66,10 @@ namespace BatchPay.Model
             get
             {
                 return _cardHolderName.PadRight(30, padding);
+            }
+            set
+            {
+                _cardHolderName = value;
             }
         }
 
@@ -249,7 +277,7 @@ namespace BatchPay.Model
             }
             set
             {
-                CVC2Value = value;
+                _CVC2Value = value;
             }
         }
 

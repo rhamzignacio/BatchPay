@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BatchPayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BatchPayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConfigCount">
+          <Key>
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Settings" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Logs">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,7 +21,7 @@
           <Property Name="ExtractedDate" Type="datetime" />
           <Property Name="ExtractedBy" Type="uniqueidentifier" />
         </EntityType>
-        <EntityType Name="UseAccount">
+        <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -25,14 +33,27 @@
           <Property Name="Status" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityContainer Name="BatchPayModelStoreContainer">
+          <EntitySet Name="ConfigCount" EntityType="Self.ConfigCount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UseAccount" EntityType="Self.UseAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BatchPayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BatchPayEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ConfigCount" EntityType="BatchPayModel.ConfigCount" />
+          <EntitySet Name="Logs" EntityType="BatchPayModel.Logs" />
+          <EntitySet Name="UserAccount" EntityType="BatchPayModel.UserAccount" />
+        </EntityContainer>
+        <EntityType Name="ConfigCount">
+          <Key>
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Settings" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Logs">
           <Key>
             <PropertyRef Name="ID" />
@@ -41,7 +62,7 @@
           <Property Name="ExtractedDate" Type="DateTime" Precision="3" />
           <Property Name="ExtractedBy" Type="Guid" />
         </EntityType>
-        <EntityType Name="UseAccount">
+        <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -52,34 +73,39 @@
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="BatchPayEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Logs" EntityType="Self.Logs" />
-          <EntitySet Name="UseAccount" EntityType="Self.UseAccount" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BatchPayModelStoreContainer" CdmEntityContainer="BatchPayEntities">
-          <EntitySetMapping Name="Logs">
-            <EntityTypeMapping TypeName="BatchPayModel.Logs">
-              <MappingFragment StoreEntitySet="Logs">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ExtractedDate" ColumnName="ExtractedDate" />
-                <ScalarProperty Name="ExtractedBy" ColumnName="ExtractedBy" />
+        <EntityContainerMapping StorageEntityContainer="BatchPayModelStoreContainer" CdmEntityContainer="BatchPayEntities1">
+          <EntitySetMapping Name="ConfigCount">
+            <EntityTypeMapping TypeName="BatchPayModel.ConfigCount">
+              <MappingFragment StoreEntitySet="ConfigCount">
+                <ScalarProperty Name="Settings" ColumnName="Settings" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UseAccount">
-            <EntityTypeMapping TypeName="BatchPayModel.UseAccount">
-              <MappingFragment StoreEntitySet="UseAccount">
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="BatchPayModel.Logs">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="ExtractedBy" ColumnName="ExtractedBy" />
+                <ScalarProperty Name="ExtractedDate" ColumnName="ExtractedDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccount">
+            <EntityTypeMapping TypeName="BatchPayModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

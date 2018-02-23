@@ -12,7 +12,7 @@ namespace BatchPay.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UseAccount
+    public partial class UserAccount
     {
         public System.Guid ID { get; set; }
         public string Username { get; set; }

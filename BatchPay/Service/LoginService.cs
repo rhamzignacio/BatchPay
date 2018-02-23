@@ -15,9 +15,9 @@ namespace BatchPay.Service
             {
                 message = "";
 
-                using (var batchDB = new BatchPayEntities())
+                using (var batchDB = new BatchPayEntities1())
                 {
-                    var user = batchDB.UseAccount.FirstOrDefault(r => r.Username == _username && r.Password == _password);
+                    var user = batchDB.UserAccount.FirstOrDefault(r => r.Username == _username && r.Password == _password);
 
                     if(user == null)
                     {

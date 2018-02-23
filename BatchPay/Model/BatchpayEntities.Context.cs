@@ -13,10 +13,10 @@ namespace BatchPay.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BatchPayEntities : DbContext
+    public partial class BatchPayEntities1 : DbContext
     {
-        public BatchPayEntities()
-            : base("name=BatchPayEntities")
+        public BatchPayEntities1()
+            : base("name=BatchPayEntities1")
         {
         }
     
@@ -25,7 +25,8 @@ namespace BatchPay.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ConfigCount> ConfigCount { get; set; }
         public virtual DbSet<Logs> Logs { get; set; }
-        public virtual DbSet<UseAccount> UseAccount { get; set; }
+        public virtual DbSet<UserAccount> UserAccount { get; set; }
     }
 }

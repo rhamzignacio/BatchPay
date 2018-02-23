@@ -12,10 +12,10 @@ namespace BatchPay.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CCBatchUploadHash
+    public partial class CCEncrypted
     {
-        public string CCNum { get; set; }
         public decimal CCID { get; set; }
-        public decimal InvoiceDetailID { get; set; }
+        public string CCMask { get; set; }
+        public byte[] CCNumber { get; set; }
     }
 }

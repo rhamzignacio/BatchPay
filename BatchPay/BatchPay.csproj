@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +46,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>if_JD-15_2224480.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -57,31 +78,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BatchpayEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BatchpayEntities.Context.tt</DependentUpon>
+    <Compile Include="Model\ARInvoiceDetails.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BatchpayEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BatchpayEntities.tt</DependentUpon>
+    <Compile Include="Model\ARInvoices.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\BatchpayEntities.Designer.cs">
+    <Compile Include="Model\BatchPayEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
+      <DependentUpon>BatchPayEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BatchPayEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BatchPayEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BatchPayEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BatchPayEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\BatchPayModel.cs" />
     <Compile Include="Model\BDOFormatModel.cs" />
+    <Compile Include="Model\Cards.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CCBatchUpload.cs">
       <DependentUpon>TravcomEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CCBatchUploadHash.cs">
       <DependentUpon>TravcomEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CCEncrypted.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConfigCount.cs">
+      <DependentUpon>BatchPayEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CorporateProfileModel.cs" />
     <Compile Include="Model\Logs.cs">
-      <DependentUpon>BatchpayEntities.tt</DependentUpon>
+      <DependentUpon>BatchPayEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Profiles.cs">
+      <DependentUpon>TravcomEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TravcomEntities.Context.cs">
       <AutoGen>True</AutoGen>
@@ -98,13 +138,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TravcomEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\UseAccount.cs">
-      <DependentUpon>BatchpayEntities.tt</DependentUpon>
+    <Compile Include="Model\UserAccount.cs">
+      <DependentUpon>BatchPayEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BatchPayService.cs" />
+    <Compile Include="Service\EncyptionService.cs" />
     <Compile Include="Service\LoginService.cs" />
+    <Compile Include="View\ClientEnroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClientEnroll.Designer.cs">
+      <DependentUpon>ClientEnroll.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +173,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ClientEnroll.resx">
+      <DependentUpon>ClientEnroll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,12 +186,12 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TravcomEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="Model\BatchpayEntities.edmx">
+    <EntityDeploy Include="Model\BatchPayEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BatchpayEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>BatchPayEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\BatchpayEntities.edmx.diagram">
-      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
+    <None Include="Model\BatchPayEntities.edmx.diagram">
+      <DependentUpon>BatchPayEntities.edmx</DependentUpon>
     </None>
     <None Include="Model\TravcomEntities.edmx.diagram">
       <DependentUpon>TravcomEntities.edmx</DependentUpon>
@@ -161,15 +211,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\BatchpayEntities.Context.tt">
+    <Content Include="if_JD-15_2224480.ico" />
+    <Content Include="Model\BatchPayEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
-      <LastGenOutput>BatchpayEntities.Context.cs</LastGenOutput>
+      <DependentUpon>BatchPayEntities.edmx</DependentUpon>
+      <LastGenOutput>BatchPayEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\BatchpayEntities.tt">
+    <Content Include="Model\BatchPayEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BatchpayEntities.edmx</DependentUpon>
-      <LastGenOutput>BatchpayEntities.cs</LastGenOutput>
+      <DependentUpon>BatchPayEntities.edmx</DependentUpon>
+      <LastGenOutput>BatchPayEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Model\TravcomEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -181,11 +232,23 @@
       <DependentUpon>TravcomEntities.edmx</DependentUpon>
       <LastGenOutput>TravcomEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="Src\if_JD-15_2224480.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

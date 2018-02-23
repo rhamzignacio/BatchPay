@@ -25,7 +25,12 @@ namespace BatchPay.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CCBatchUpload> CCBatchUpload { get; set; }
+        public virtual DbSet<Profiles> Profiles { get; set; }
+        public virtual DbSet<ARInvoiceDetails> ARInvoiceDetails { get; set; }
+        public virtual DbSet<ARInvoices> ARInvoices { get; set; }
+        public virtual DbSet<Cards> Cards { get; set; }
+        public virtual DbSet<CCEncrypted> CCEncrypted { get; set; }
         public virtual DbSet<CCBatchUploadHash> CCBatchUploadHash { get; set; }
+        public virtual DbSet<CCBatchUpload> CCBatchUpload { get; set; }
     }
 }
